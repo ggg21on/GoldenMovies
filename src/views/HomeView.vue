@@ -1,102 +1,237 @@
 <template>
-  <v-container class="content" fluid>
-    <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg" height="500">
-      <div class="row">
-        <v-btn class="box1" variant="outlined" width="100" height="50" color="blue">
-          Criar Conta
-        </v-btn>
-      </div>
-      &nbsp;
-      <div class="row1">
-        <V-btn class="box2" variant="outlined" width="100" height="50" color="blue">
-          Login
-        </V-btn>
-      </div>
-      <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="title-home">
-          Revivas Obras clássicas e inesquecíveis.
-        </h1>
-        <h4 class="subheading">
-          Da década de 20 a 80.
-        </h4>
-      </div>
-    </v-parallax>
-    <v-img class="desktop" src=../assets/desktop.png height="550" width="550"></v-img>
-    <v-divider class="line2"></v-divider>
-    <v-row>
-      <v-col cols="12" sm="6" md="4" lg="3" offset-lg="12">
-        <v-img src="../assets/chefao.jpg" width="390" height="300"></v-img>
-        <v-img src="../assets/007.jpg" width="390" height="222">
-        </v-img>
-      </v-col>
-      <v-col>
-        <v-img src="../assets/star-wars.jpg" width="390" height="321">
-        </v-img>
-      </v-col>
-      <v-col>
-        <v-img src="../assets/indiana-jones.jpg" width="390" height="321">
-        </v-img>
-      </v-col>
-    </v-row>
+  <div>
+    <v-app-bar app class="blur" color="transparent" dark>
+      <v-toolbar-title>GoldenMovies</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn color="secondary" text>Criar Conta</v-btn>
+      <v-btn color="secondary" text>Entrar</v-btn>
+    </v-app-bar>
+    <!-- Parallax section -->
+    <div>
+      <v-parallax dark class="parallax" src="https://isquad.tv/wp-content/uploads/2018/08/Netflix-Background.jpg"
+        style="filter: brightness(0.8) contrast(0.8) saturate(1.5);">
+        <h1 class="title" style="filter: none; color: white;">Revivas obras clássicas e inesquecíveis.</h1>
+        <p class="text" style="filter: none;">Revivas obras clássicas e inesquecíveis.</p>
+      </v-parallax>
+    </div>
+    <br>
+    <v-timeline direction="horizontal">
+      <v-timeline-item>
+        <template v-slot:opposite>
+          Opposite content
+        </template>
+        <div>
+          <div class="text-h6">Content title</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </div>
+      </v-timeline-item>
 
-    <v-divider class="line3"></v-divider>
-  </v-container>
+      <v-timeline-item>
+        <template v-slot:opposite>
+          Opposite content
+        </template>
+        <div>
+          <div class="text-h6">Content title</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </div>
+      </v-timeline-item>
+
+      <v-timeline-item>
+        <template v-slot:opposite>
+          Opposite content
+        </template>
+        <div>
+          <div class="text-h6">Content title</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+        </div>
+      </v-timeline-item>
+    </v-timeline>
+    <!-- Main content section -->
+    <br>
+    <v-divider></v-divider>
+    <br>
+    <v-carousel
+    cycle
+    height="400"
+    hide-delimiter-background
+    show-arrows="hover"
+  >
+    <v-carousel-item
+      v-for="(slide, i) in slides"
+      :key="i"
+    >
+      <v-sheet
+        :color="colors[i]"
+        height="100%"
+      >
+        <div class="d-flex fill-height justify-center align-center">
+          <div class="text-h2">
+            {{ slide }} Slide
+          </div>
+        </div>
+      </v-sheet>
+    </v-carousel-item>
+  </v-carousel>
+
+  
+  </div>
 </template>
 
+
 <script>
-
+export default {
+  data () {
+  return {
+        colors: [
+          'indigo',
+          'warning',
+          'pink darken-2',
+          'red lighten-1',
+          'deep-purple accent-4',
+        ],
+        slides: [
+          'First',
+          'Second',
+          'Third',
+          'Fourth',
+          'Fifth',
+        ],
+      }
+    },
+  }
 </script>
-
-
 <style>
-.v-main {
-  background-color: #151515;
-}
+  .original {
+    color: white;
+  }
 
-.row {
-  pointer-events: none;
-}
+  .line {
+    color: white;
+  }
 
-/* restaura a interação do toch e mouse a todos elementos "filhos", incluindo os botões e outros */
-.row>* {
-  pointer-events: auto;
-}
+  ul {
+    display: flex;
+    list-style: none;
+    font-size: 20px;
+  }
 
-.row:hover>[class*=box1] {
-  background-color: whitesmoke;
-}
+  li {
+    margin-right: 30px;
+    color: #b3b3b3;
+  }
 
-.row1:hover>[class*=box2] {
-  background-color: whitesmoke;
-}
+  .active {
+    color: #fff;
+    border-bottom: 2px solid #e50914;
+  }
 
-div>div {
-  display: inline-block;
-}
+  .jumbotron {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+  }
 
-.box1 {
-  font-size: 11px;
-}
+  .mdi {
+    height: 200%;
+  }
 
-.text {
-  color: white;
-  font-size: 25px;
-  font-family: 'Arial', sans-serif;
-}
+  .main-content {
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+  }
 
-.line {
-  color: white;
-}
+  h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
 
-.line2 {
-  color: white;
-}
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
-.line3 {
-  color: white;
-}
+  .card {
+    width: 23%;
+    margin-bottom: 20px;
+  }
 
-.title-home {
-  font-weight: bold;
-}
+  .card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .icons img {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .parallax {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+  }
+
+  .parallax h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .parallax p {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card {
+      width: 48%;
+    }
+
+    .parallax h1 {
+      font-size: 30px;
+    }
+
+    .parallax p {
+      font-size: 20px;
+    }
+
+    .text-h6 {
+      font-size: 18px;
+    }
+
+    .main-content {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .pt-container {
+      display: flex;
+    }
+
+    .pt-0 {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
 </style>
